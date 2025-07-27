@@ -54,7 +54,7 @@ namespace Epidemic {
 
 
 QueueEntry::QueueEntry (void)
-  : m_packet (0),
+  : m_packet (nullptr),
     m_header (Ipv4Header ()),
     m_ucb (UnicastForwardCallback ()),
     m_ecb (ErrorCallback ()),

@@ -130,7 +130,7 @@ void
 RoutingProtocol::DoDispose ()
 {
   NS_LOG_FUNCTION (this);
-  m_ipv4 = 0;
+  m_ipv4 = nullptr;
   for (std::map<Ptr<Socket>, Ipv4InterfaceAddress>::iterator
        iter = m_socketAddresses.begin (); iter
        != m_socketAddresses.end (); iter++)
@@ -434,8 +434,8 @@ RoutingProtocol::RouteInput (Ptr<const Packet> p,
                              ErrorCallback ecb)
 {
   NS_LOG_FUNCTION (this << header << *p );
-  NS_ASSERT (m_ipv4 != 0);
-  NS_ASSERT (p != 0);
+  NS_ASSERT (m_ipv4 != nullptr);
+  NS_ASSERT (p != nullptr);
   // Check if input device supports IP
   NS_ASSERT (m_ipv4->GetInterfaceForDevice (idev) >= 0);
   /*
@@ -673,7 +673,7 @@ RoutingProtocol::NotifyAddAddress (uint32_t i,Ipv4InterfaceAddress address)
           Ptr<Socket> socket =
             Socket::CreateSocket (GetObject<Node> (),
                                   UdpSocketFactory::GetTypeId ());
-          NS_ASSERT (socket != 0);
+          NS_ASSERT (socket != nullptr);
           socket->SetRecvCallback (
             MakeCallback (&RoutingProtocol::RecvEpidemic,this));
           socket->Bind (InetSocketAddress (Ipv4Address::GetAny (),
@@ -709,7 +709,7 @@ RoutingProtocol::NotifyRemoveAddress (uint32_t i,Ipv4InterfaceAddress address)
           // Create a socket to listen only on this interface
           Ptr<Socket> socket = Socket::CreateSocket (GetObject<Node> (),
                                                      UdpSocketFactory::GetTypeId ());
-          NS_ASSERT (socket != 0);
+          NS_ASSERT (socket != nullptr);
           socket->SetRecvCallback (
             MakeCallback (&RoutingProtocol::RecvEpidemic,this));
           // Bind to any IP address so that broadcasts can be received
