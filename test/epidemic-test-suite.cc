@@ -187,10 +187,10 @@ public:
 };
 
 EpidemicTestSuite::EpidemicTestSuite ()
-  : TestSuite ("epidemic", UNIT)
+  : TestSuite ("epidemic", Type::UNIT)
 {
-  AddTestCase (new EpidemicHeaderTestCase, TestCase::QUICK);
-  AddTestCase (new EpidemicRqueueTest, TestCase::QUICK);
+  AddTestCase (new EpidemicHeaderTestCase, Duration::QUICK);
+  AddTestCase (new EpidemicRqueueTest, Duration::QUICK);
 }
 
 
